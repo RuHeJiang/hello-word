@@ -1,12 +1,12 @@
 array(27) {
   ["website_id"] =&gt; int(1)
-  ["title"] =&gt; string(12) "¾©¾©ÀÖ¹º"
+  ["title"] =&gt; string(12) "äº¬äº¬ä¹è´­"
   ["logo"] =&gt; string(28) "upload/common/1547102620.png"
-  ["web_desc"] =&gt; string(24) "¹ºÎï£¬Ïû·Ñ£¬ÓªÏú"
-  ["key_words"] =&gt; string(24) "¹ºÎï£¬Ïû·Ñ£¬ÓªÏú"
+  ["web_desc"] =&gt; string(24) "è´­ç‰©ï¼Œæ¶ˆè´¹ï¼Œè¥é”€"
+  ["key_words"] =&gt; string(24) "è´­ç‰©ï¼Œæ¶ˆè´¹ï¼Œè¥é”€"
   ["web_icp"] =&gt; string(0) ""
   ["style_id_pc"] =&gt; int(1)
-  ["web_address"] =&gt; string(15) "ÉîÛÚ±£°²Çø"
+  ["web_address"] =&gt; string(15) "æ·±åœ³ä¿å®‰åŒº"
   ["web_qrcode"] =&gt; string(28) "upload/common/1547102643.jpg"
   ["web_url"] =&gt; string(48) "http://niushop.jingjinglego.com/index.php?s=/wap"
   ["web_email"] =&gt; string(0) ""
@@ -15,13 +15,13 @@ array(27) {
   ["web_weixin"] =&gt; string(0) ""
   ["web_status"] =&gt; int(1)
   ["third_count"] =&gt; string(0) ""
-  ["close_reason"] =&gt; string(57) "¶Ô²»Æğ£¬Å£¿áÉÌ³ÇÎ¬»¤ÖĞ£¬´ó¼Ò¾´ÇëÆÚ´ı..."
+  ["close_reason"] =&gt; string(57) "å¯¹ä¸èµ·ï¼Œç‰›é…·å•†åŸç»´æŠ¤ä¸­ï¼Œå¤§å®¶æ•¬è¯·æœŸå¾…..."
   ["wap_status"] =&gt; int(1)
   ["style_id_admin"] =&gt; int(4)
   ["create_time"] =&gt; int(1477452112)
   ["modify_time"] =&gt; int(1547102650)
   ["url_type"] =&gt; int(0)
-  ["web_popup_title"] =&gt; string(30) "»¶Ó­ÄãÕâÃ´Ë§£¬À´¹ºÎï"
+  ["web_popup_title"] =&gt; string(30) "æ¬¢è¿ä½ è¿™ä¹ˆå¸…ï¼Œæ¥è´­ç‰©"
   ["web_wechat_share_logo"] =&gt; string(28) "upload/common/1547102629.jpg"
   ["web_gov_record"] =&gt; string(0) ""
   ["web_gov_record_url"] =&gt; string(0) ""
@@ -61,18 +61,18 @@ array(5) {
             return [];
         }
         $We7_hjk_model = new We7HjkModel();
-        if ($type == 1){//ÉèÖÃ¿Í·şµç»°ÑéÖ¤
+        if ($type == 1){//è®¾ç½®å®¢æœç”µè¯éªŒè¯
             $code = rand(10000, 99999);
             $smsParam = json_encode(array('code'=>$code));
             $wxsdk = getWxsdkWe7();
             $aly_msg = aliSmsSend($wxsdk['appkey'], $wxsdk['secret'], $wxsdk['signName'], $smsParam, $mobile, $wxsdk['template_code'], $sms_type = 1);
             $res = object_array($aly_msg);
-           if ($res['Code'] === "OK"){//·¢ËÍ³É¹¦
-               //¼ÇÂ¼ÑéÖ¤Âë------
+           if ($res['Code'] === "OK"){//å‘é€æˆåŠŸ
+               //è®°å½•éªŒè¯ç ------
                $We7_hjk_model->insertSmsrecordModel($uid,$code,$mobile);
-               return array('status'=>1,'hint'=>"·¢ËÍ³É¹¦",'data'=>$res);
-           }else{//·¢ËÍÊ§°Ü
-               newUserInfoLogWe7("/upload/we7_fans/running_log/weixin_paymanageid","2","\r\n\r\n");
+               return array('status'=>1,'hint'=>"å‘é€æˆåŠŸ",'data'=>$res);
+           }else{//å‘é€å¤±è´¥
+               
                return array('status'=>0,'hint'=>$res['Message'],'data'=>$res);
            }
         }
